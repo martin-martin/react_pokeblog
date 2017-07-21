@@ -1,0 +1,39 @@
+.blog {
+  text-align: center;
+}
+
+.blog-logo {
+  animation: App-logo-spin infinite 5s linear;
+  height: 100px;
+}
+
+.blog-header {
+  background-color: gray;
+  height: 200px;
+  padding: 20px;
+  color: white;
+}
+
+.blog-subtitle {
+  font-size: large;
+}
+
+.post {
+  margin: 20px;
+}
+
+.post-img {
+  width: 200px;
+}
+
+.blog-body,
+.party {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
