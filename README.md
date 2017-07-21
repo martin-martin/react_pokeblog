@@ -7,7 +7,7 @@ It will be live at [https://www.riverhike.com](https://www.riverhike.com)
 
 Keep catching!
 
-![img](src/pokeball_icon.svg)
+![img](https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg)
 
 ---
 
