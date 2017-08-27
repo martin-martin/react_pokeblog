@@ -11,7 +11,7 @@ class Party extends Component {
 
     return(
       <div className="party">
-        <Post image={placholderball} content=""/>
+        <Post image={ultraball} content="ByeBay"/>
         <Post image={placholderball} content=""/>
         <Post image={placholderball} content=""/>
         <Post image={placholderball} content=""/>
