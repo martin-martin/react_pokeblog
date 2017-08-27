@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Post from './Post'
-// import placeholderball from './ball_placeholder.svg'
+import placeholderball from './ball_placeholder.svg'
 import pokeball from './ball_poke.svg'
 import greatball from './ball_great.svg'
 import ultraball from './ball_ultra.svg'
@@ -62,9 +62,21 @@ class App extends Component {
         </div>
         <div className="party">
           {this.state.posts.map((post, i) => {
+            let count = 0
+
             if (post.isParty) {
               return <Post image={post.ball} idKey={i} title={post.title}/>
-            }}
+              count += 1
+            }
+            {/*
+              a pkmn party always consists of the possible 6 pkmn
+              leave the grayed out balls as placeholders
+              if there aren't the full amount of 6 stories in the party
+            */}
+            for (i = count; count<=6; i++) {
+              return <Post image={placeholderball} idKey={i} title={""}/>
+            }
+          }
           )}
         </div>
         <div className="blog-body">
