@@ -1,45 +1,55 @@
-import React, { Component } from 'react';
-import placholderball from './ball_placeholder.svg';
-import pokeball from './ball_poke.svg';
-import greatball from './ball_great.svg';
-import ultraball from './ball_ultra.svg';
-import pokeball_icon from './simple_pokeball.svg';
-import './blog.css';
-
-class Party extends Component {
-  render() {
-
-    return(
-      <div className="party">
-        <Post image={ultraball} content="ByeBay"/>
-        <Post image={placholderball} content=""/>
-        <Post image={placholderball} content=""/>
-        <Post image={placholderball} content=""/>
-        <Post image={placholderball} content=""/>
-        <Post image={placholderball} content=""/>
-      </div>
-      );
-  }
-}
-
-class Post extends Component {
-  render() {
-
-    const image = this.props.image
-    const content = this.props.content
-
-    return (
-      <div className="post">
-        <img src={image} className="post-img" alt="placeholder" />
-        <p className="post-content">
-          {content}
-        </p>
-      </div>
-    );
-  }
-}
+import React, { Component } from 'react'
+import Post from './Post'
+// import placeholderball from './ball_placeholder.svg'
+import pokeball from './ball_poke.svg'
+import greatball from './ball_great.svg'
+import ultraball from './ball_ultra.svg'
+import pokeball_icon from './simple_pokeball.svg'
+import './blog.css'
 
 class App extends Component {
+
+  state = {
+    posts: [
+      {
+        title: "this day was sweet",
+        ball: pokeball,
+        link: "",
+        isParty: false
+      },
+      {
+        title: "a travel around the bay",
+        ball: ultraball,
+        link: "",
+        isParty: true
+      },
+      {
+        title: "more stories here",
+        ball: pokeball,
+        link: "",
+        isParty: false
+      },
+      {
+        title: "swimming to remote gyms",
+        ball: greatball,
+        link: "",
+        isParty: false
+      },
+      {
+        title: "a round of hills and water",
+        ball: greatball,
+        link: "",
+        isParty: false
+      },
+      {
+        title: "events upcoming",
+        ball: pokeball,
+        link: "",
+        isParty: false
+      }
+    ]
+  }
+
   render() {
     return (
       <div className="blog">
@@ -50,18 +60,23 @@ class App extends Component {
             A collection of personal Pokémon adventures.
           </p>
         </div>
-        <Party />
+        <div className="party">
+          {this.state.posts.map((post, i) => {
+            if (post.isParty) {
+              return <Post image={post.ball} idKey={i} title={post.title}/>
+            }}
+          )}
+        </div>
         <div className="blog-body">
-          <Post image={pokeball} content="this day was sweet!"/>
-          <Post image={pokeball} content="more stories here"/>
-          <Post image={ultraball} content="a travel around the bay"/>
-          <Post image={greatball} content="swimming to remote gyms"/>
-          <Post image={greatball} content="a round of hills and water"/>
-          <Post image={pokeball} content="events upcoming"/>
+          {this.state.posts.map((post, i) => {
+            if (post.isParty === false) {
+              return <Post image={post.ball} idKey={i} title={post.title}/>
+            }}
+          )}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
