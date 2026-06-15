@@ -60,31 +60,27 @@ class App extends Component {
             A collection of personal Pokémon adventures.
           </p>
         </div>
+        {/*
+          a pkmn party always consists of the possible 6 pkmn
+          leave the grayed out balls as placeholders
+          if there aren't the full amount of 6 stories in the party
+        */}
         <div className="party">
-          {this.state.posts.map((post, i) => {
-            let count = 0
-
-            if (post.isParty) {
-              return <Post image={post.ball} idKey={i} title={post.title}/>
-              count += 1
-            }
-            {/*
-              a pkmn party always consists of the possible 6 pkmn
-              leave the grayed out balls as placeholders
-              if there aren't the full amount of 6 stories in the party
-            */}
-            for (i = count; count<=6; i++) {
-              return <Post image={placeholderball} idKey={i} title={""}/>
-            }
-          }
-          )}
+          {this.state.posts.slice(0, 6).map((post, i) => (
+            <Post
+              key={i}
+              idKey={i}
+              image={post.isParty ? post.ball : placeholderball}
+              title={post.isParty ? post.title : ""}
+            />
+          ))}
         </div>
         <div className="blog-body">
-          {this.state.posts.map((post, i) => {
-            if (post.isParty === false) {
-              return <Post image={post.ball} idKey={i} title={post.title}/>
-            }}
-          )}
+          {this.state.posts
+            .filter((post) => !post.isParty)
+            .map((post, i) => (
+              <Post key={i} idKey={i} image={post.ball} title={post.title} />
+            ))}
         </div>
       </div>
     )
