@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import placeholderball from './ball_placeholder.svg'
 
 class Post extends Component {
 
